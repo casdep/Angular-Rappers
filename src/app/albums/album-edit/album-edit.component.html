@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!albumForm.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="artist">Artist</label>
+            <input type="text" id="artist" formControlName="artist" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="album.name">Name</label>
+            <input type="text" id="album.name" formControlName="name" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="pictureURL">Picture</label>
+            <input type="text" id="pictureURL" formControlName="pictureURL" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="tracks">Tracks</label>
+            <input type="text" id="tracks" formControlName="tracks" class="form-control" #imageURL>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="length">Length</label>
+            <input type="text" id="length" formControlName="length" class="form-control" #imageURL>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="pictureURL" class="img-responsive">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="rappers">
+          <!-- Oorspronkelijk: <div class="row" *ngFor="let rapperCtrl of albumForm.get('rappers').controls; let i = index" [formGroupName]="i" -->
+          <div class="row" *ngFor="let rapperCtrl of albumForm['controls'].rappers['controls']; let i = index" [formGroupName]="i"
+               style="margin-top: 10px;">
+            <!-- De volgende regel voeg je ook toe -->
+            <pre *ngIf="rapperCtrl">{{ rapperCtrl.value | json }}</pre>
+            <div class="col-xs-8">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" formControlName="name">
+            </div>
+            <div class="col-xs-8">
+              <label for="breakthroughTrack">Breakthrough song</label>
+              <input type="text" id="breakthroughTrack" class="form-control" formControlName="breakthroughTrack">
+            </div>
+            <div class="col-xs-2">
+              <label for="dateOfBirth">Year of Birth</label>
+              <input type="number" id="dateOfBirth" class="form-control" formControlName="dateOfBirth">
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-danger" (click)="onDeleteRapper(i)">X</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-success" (click)="onAddRapper()">Add Rapper</button>
+            </div>
+          </div>
+          <br/>
+          <br/>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="recordcompanies">
+          <!-- Oorspronkelijk: <div class="row" *ngFor="let rapperCtrl of albumForm.get('rappers').controls; let i = index" [formGroupName]="i" -->
+          <div class="row" *ngFor="let recordcompanyCtrl of albumForm['controls'].recordcompanies['controls']; let i = index" [formGroupName]="i"
+               style="margin-top: 10px;">
+            <!-- De volgende regel voeg je ook toe -->
+            <pre *ngIf="recordcompanyCtrl">{{ recordcompanyCtrl.value | json }}</pre>
+            <div class="col-xs-8">
+              <label for="recordcompany.name">Publisher Name</label>
+              <input type="text" id="recordcompany.name" class="form-control" formControlName="recordcompany.name">
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-danger" (click)="onDeleteRecordcompany(i)">X</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-success" (click)="onAddRecordcompany()">Add Record Company</button>
+            </div>
+          </div>
+          <br/>
+          <br/>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
