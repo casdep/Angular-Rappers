@@ -1,12 +1,11 @@
 
 export class Rapper {
-  public _id: string;
-  public name: string;
+  public rapperName: string;
   public breakthroughTrack: string;
   public dateOfBirth: string;
 
-  constructor(name: string, breakthroughTrack: string, dateOfBirth: string) {
-    this.name = name;
+  constructor(rapperName: string, breakthroughTrack: string, dateOfBirth: string) {
+    this.rapperName = rapperName;
     this.breakthroughTrack = breakthroughTrack;
     this.dateOfBirth = dateOfBirth;
   }

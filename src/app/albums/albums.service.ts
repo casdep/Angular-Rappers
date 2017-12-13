@@ -49,8 +49,14 @@ export class AlbumsService {
         pictureURL: album.pictureURL,
         tracks: album.tracks,
         lengthMin: album.lengthMin,
-        rapper: album.rappers,
-        recordcompany: album.recordcompanies,
+        rapper: {
+          rapperName: album.rapper.rapperName,
+          breakthroughTrack: album.rapper.breakthroughTrack,
+          dateOfBirth: album.rapper.dateOfBirth
+        },
+        recordcompany: {
+          labelName: album.recordcompany.labelName
+        },
         headers: this.headers
       })
       .toPromise()
@@ -76,8 +82,14 @@ export class AlbumsService {
       pictureURL: newAlbum.pictureURL,
       tracks: newAlbum.tracks,
       lengthMin: newAlbum.lengthMin,
-      rapper: newAlbum.rappers,
-      recordcompany: newAlbum.recordcompanies,
+      rapper: {
+        rapperName: newAlbum.rapper.rapperName,
+        breakthroughTrack: newAlbum.rapper.breakthroughTrack,
+        dateOfBirth: newAlbum.rapper.dateOfBirth
+      },
+      recordcompany: {
+        labelName: newAlbum.recordcompany.labelName
+      },
       headers: this.headers
     })
       .toPromise()

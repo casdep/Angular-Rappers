@@ -1,5 +1,5 @@
 import {Rapper} from '../shared/rapper.model';
-import {Recordcompany} from '../shared/recordcompany.model';
+import {RecordCompany} from '../shared/recordcompany.model';
 
 export class Album {
   public _id: string;
@@ -8,18 +8,18 @@ export class Album {
   public pictureURL: string;
   public tracks: number;
   public lengthMin: number;
-  public rappers: Rapper[];
-  public recordcompanies: Recordcompany[];
+  public rapper: Rapper;
+  public recordcompany: RecordCompany;
 
   constructor(
-    title: string, name: string, pictureURL: string, tracks: number, lengthMin: number, rappers: Rapper[], recordcompanies: Recordcompany[]
-  ) {
+    title: string, name: string, pictureURL: string, tracks: number, lengthMin: number, rapper: Rapper, recordcompany: RecordCompany)
+  {
     this.artist = title;
     this.name = name;
     this.pictureURL = pictureURL;
     this.tracks = tracks;
     this.lengthMin = lengthMin;
-    this.rappers = rappers;
-    this.recordcompanies = recordcompanies;
+    this.rapper = rapper;
+    this.recordcompany = recordcompany;
   }
 }
