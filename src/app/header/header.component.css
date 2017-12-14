@@ -1,0 +1,10 @@
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: darkgrey;
+  color: ghostwhite;
+
+}
+button :active{
+  background-color: violet;
+  color: cyan;
+}
+

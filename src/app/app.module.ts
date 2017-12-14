@@ -14,6 +14,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AlbumStartComponent } from './albums/album-start/album-start.component';
 import { AlbumEditComponent } from './albums/album-edit/album-edit.component';
 import { AlbumsService } from './albums/albums.service';
+import {RapperDetailComponent} from './rappers/rapper-detail/rapper-detail.component';
+import {RapperComponent} from './rappers/rappers.component';
+import {RapperListComponent} from './rappers/rapper-list/rapper-list.component';
+import {RapperItemComponent} from './rappers/rapper-list/rapper-item/rapper-item.component';
+import {RapperStartComponent} from './rappers/rapper-start/rapper-start.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { AlbumsService } from './albums/albums.service';
     AlbumItemComponent,
     DropdownDirective,
     AlbumStartComponent,
-    AlbumEditComponent
+    AlbumEditComponent,
+    RapperComponent,
+    RapperListComponent,
+    RapperDetailComponent,
+    RapperItemComponent,
+    RapperStartComponent,
   ],
   imports: [
     BrowserModule,

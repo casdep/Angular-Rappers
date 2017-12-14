@@ -10,12 +10,14 @@ import {Headers} from '@angular/http';
 export class AlbumsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrl = environment.serverUrl + '/albums'; // URL to web api
+  private serverUrl = environment.serverUrl + '/';
   private albums: Album[] = [];
+  private rapperAlbums: Album[] =[];
 
   albumsChanged = new Subject<Album[]>();
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
   public getAlbums(): Promise<Album[]> {
     console.log('albums ophalen van de server');
@@ -31,10 +33,10 @@ export class AlbumsService {
       });
   }
 
+
   getAlbum(index: number) {
     return this.albums[index];
   }
-
 
 
   addAlbum(album: Album): Promise<Album> {
@@ -117,6 +119,24 @@ export class AlbumsService {
         return this.handleError(error);
       });
   }
+
+  public getRapperAlbums(index: number): Promise<Album[]> {
+    console.log('' +
+      'Albums ophalen van server');
+    const rapperName = this.albums[index].rapper.rapperName;
+    console.log(rapperName);
+    return this.http.get(this.serverUrl + '/rappers' + '/' + rapperName, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        console.dir(response.json());
+        this.rapperAlbums = response.json() as Album[];
+        return response.json() as Album[];
+      })
+      .catch(error => {
+        return this.handleError(error);
+      });
+  }
+
 
   private handleError(error: any): Promise<any> {
     console.log('handleError');

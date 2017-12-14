@@ -1,0 +1,15 @@
+<div class="row">
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <app-rapper-item
+      *ngFor="let albumEl of albums; let i = index"
+      [album]="albumEl"
+      [index]="i"></app-rapper-item>
+  </div>
+</div>
+
