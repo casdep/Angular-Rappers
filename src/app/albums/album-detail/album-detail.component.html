@@ -10,14 +10,17 @@
 <div class="row">
   <div class="col-xs-12">
     <h1>{{ album?.name }}</h1>
-    <p>Artist: {{album?.artist}}</p>
-    <p>Tracks: {{album?.tracks}}</p>
-    <p>Duration: {{album?.lengthMin}}</p>
-    <p>Rapper details:</p>
-    <p>Name: {{album.rapper?.rapperName}}</p>
-    <p>Hit: {{album.rapper?.breakthroughTrack}}</p>
-    <p>Birth year: {{album.rapper?.dateOfBirth}}</p>
-    <p>Label: {{album.recordcompany?.labelName}}</p>
+    <p> <b>Artist:</b> {{album?.artist}}</p>
+    <p> <b>Tracks:</b> {{album?.tracks}}</p>
+    <p> <b>Duration:</b> {{album?.lengthMin}} min</p>
+    <hr>
+    <label>Rapper details:</label>
+    <p> <b>Name:</b> {{album.rapper?.rapperName}} </p>
+    <p> <b>Hit:</b> {{album.rapper?.breakthroughTrack}}</p>
+    <p> <b>Birth year:</b> {{album.rapper?.dateOfBirth}}</p>
+    <hr>
+    <label>Recordcopany detials:</label>
+    <p> <b>Label:</b> {{album.recordcompany?.labelName}}</p>
 
   </div>
 </div>
@@ -38,19 +41,3 @@
     </div>
   </div>
 </div>
-<!--<div class="row">-->
-  <!--<div class="col-xs-12">-->
-    <!--{{ album?.artist }}-->
-  <!--</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-  <!--<div class="col-xs-12">-->
-    <!--<ul class="list-group">-->
-      <!--<li-->
-        <!--class="list-group-item"-->
-        <!--*ngFor="let album of album?.rapper">-->
-        <!--{{ album.rapperName }} - {{ album.dateOfBirth }}-->
-      <!--</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</div>-->

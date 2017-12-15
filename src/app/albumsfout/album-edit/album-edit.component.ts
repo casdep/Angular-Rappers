@@ -83,7 +83,7 @@ this.albumForm = new FormGroup({
   }),
   'recordcompany': this.albumRecordCompany = new FormGroup({
     'labelName': new FormControl(albumRecordCompanyLabelName, Validators.required)
-      })
-    });
+  })
+  });
   }
 }
