@@ -6,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./albums.component.css']
 })
 
-export class AlbumComponent implements OnInit {
+export class AlbumComponent {
+  loadedFeature = 'album';
 
-  constructor() {
-  }
-
-  ngOnInit() {
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
   }
 }

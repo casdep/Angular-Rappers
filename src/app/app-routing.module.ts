@@ -16,9 +16,8 @@ const appRoutes: Routes = [
     { path: 'new', component: AlbumEditComponent },
     { path: ':id', component: AlbumDetailComponent },
     { path: ':id/edit', component: AlbumEditComponent },
-
   ] },
-    { path: 'rappers', component: RapperComponent, children: [
+  { path: 'rappers', component: RapperComponent, children: [
     { path: '', component: RapperStartComponent },
     { path: ':id', component: RapperDetailComponent }
     ]},
