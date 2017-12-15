@@ -10,18 +10,17 @@ import {Headers} from '@angular/http';
 export class AlbumsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrl = environment.serverUrl + '/';
+  private serverUrl = environment.serverUrl + '/'; // URL to web api
   private albums: Album[] = [];
-  private rapperAlbums: Album[] =[];
+  private rapperAlbums: Album[] = [];
 
   albumsChanged = new Subject<Album[]>();
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) {}
 
   public getAlbums(): Promise<Album[]> {
-    console.log('albums ophalen van de server');
-    return this.http.get(this.serverUrl, {headers: this.headers})
+    console.log('albums ophalen van server');
+    return this.http.get(this.serverUrl + '/albums', {headers: this.headers})
       .toPromise()
       .then(response => {
         console.dir(response.json());
@@ -33,24 +32,24 @@ export class AlbumsService {
       });
   }
 
-
   getAlbum(index: number) {
     return this.albums[index];
   }
+
 
 
   addAlbum(album: Album): Promise<Album> {
     this.albums.push(album);
     this.albumsChanged.next(this.albums.slice());
 
-    console.log('Een album toevoegen: ' + album.artist);
-    return this.http.post(this.serverUrl,
+    console.log('Album toevoegen: ' + album.name);
+    return this.http.post(this.serverUrl  + '/albums',
       {
         artist: album.artist,
         name: album.name,
         pictureURL: album.pictureURL,
         tracks: album.tracks,
-        lengthMin: album.lengthMin,
+        length: album.lengthMin,
         rapper: {
           rapperName: album.rapper.rapperName,
           breakthroughTrack: album.rapper.breakthroughTrack,
@@ -72,25 +71,25 @@ export class AlbumsService {
   }
 
   updateAlbum(index: number, newAlbum: Album): Promise<Album> {
-    newAlbum._id = this.albums[index]._id;
+    const title = this.albums[index].name;
 
     this.albums[index] = newAlbum;
     this.albumsChanged.next(this.albums.slice());
 
-    console.log('Album updaten: ' + newAlbum.artist);
-    return this.http.put(this.serverUrl + '/' + newAlbum._id, {
-      artist: newAlbum.artist,
-      name: newAlbum.name,
-      pictureURL: newAlbum.pictureURL,
-      tracks: newAlbum.tracks,
-      lengthMin: newAlbum.lengthMin,
-      rapper: {
-        rapperName: newAlbum.rapper.rapperName,
-        breakthroughTrack: newAlbum.rapper.breakthroughTrack,
-        dateOfBirth: newAlbum.rapper.dateOfBirth
-      },
-      recordcompany: {
-        labelName: newAlbum.recordcompany.labelName
+    console.log('Een Album updaten: ' + title);
+    return this.http.put(this.serverUrl + '/albums' + '/' + title, {
+        artist: newAlbum.artist,
+        name: newAlbum.name,
+        pictureURL: newAlbum.pictureURL,
+        tracks: newAlbum.tracks,
+        length: newAlbum.lengthMin,
+        rapper: {
+          rapperName: newAlbum.rapper.rapperName,
+          breakthroughTrack: newAlbum.rapper.breakthroughTrack,
+          dateOfBirth: newAlbum.rapper.dateOfBirth
+        },
+        recordcompany: {
+          labelName: newAlbum.recordcompany.labelName
       },
       headers: this.headers
     })
@@ -109,8 +108,8 @@ export class AlbumsService {
     this.albums.splice(index, 1);
     this.albumsChanged.next(this.albums.slice());
 
-    console.log('Een album verwijderen: ' + albumToDelete.artist);
-    return this.http.delete(this.serverUrl + '/' + albumToDelete._id)
+    console.log('Een album verwijderen: ' + albumToDelete.name);
+    return this.http.delete(this.serverUrl + '/albums' + '/' + albumToDelete.name)
       .toPromise()
       .then(response => {
         return response.json() as Album;
@@ -122,10 +121,10 @@ export class AlbumsService {
 
   public getRapperAlbums(index: number): Promise<Album[]> {
     console.log('' +
-      'Albums ophalen van server');
-    const rapperName = this.albums[index].rapper.rapperName;
-    console.log(rapperName);
-    return this.http.get(this.serverUrl + '/rappers' + '/' + rapperName, {headers: this.headers})
+      'albums ophalen van server');
+    const firstName = this.albums[index].rapper.rapperName;
+    console.log(firstName);
+    return this.http.get(this.serverUrl + '/rappers' + '/' + firstName, {headers: this.headers})
       .toPromise()
       .then(response => {
         console.dir(response.json());
@@ -136,7 +135,6 @@ export class AlbumsService {
         return this.handleError(error);
       });
   }
-
 
   private handleError(error: any): Promise<any> {
     console.log('handleError');

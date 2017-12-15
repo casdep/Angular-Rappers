@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://noderappers.herokuapp.com/api/v1'
+  serverUrl: 'http://localhost:3000/api/v1'
 };

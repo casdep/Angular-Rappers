@@ -25,7 +25,7 @@ export class RapperListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.albumsService.getAlbums()
-      .then(books => this.albums = books)
+      .then(albums => this.albums = albums)
       .catch(error => console.log(error));
     this.subscription = this.albumsService.albumsChanged
       .subscribe(
@@ -35,7 +35,7 @@ export class RapperListComponent implements OnInit, OnDestroy {
       );
   }
 
-  onNewBook() {
+  onNewAlbum() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 

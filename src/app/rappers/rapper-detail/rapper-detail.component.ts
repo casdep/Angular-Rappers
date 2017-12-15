@@ -26,7 +26,7 @@ export class RapperDetailComponent implements OnInit {
           (params: Params) => {
             this.id = +params['id'];
             this.albumsService.getRapperAlbums(this.id)
-              .then(books => this.album = books)
+              .then(albums => this.album = albums)
               .catch(error => console.log(error));
             this.subscription = this.albumsService.albumsChanged
               .subscribe(
