@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('n5-complete-guide App', () => {
+describe('Rock Browser', () => {
   let page: AppPage;
 
   beforeEach(() => {

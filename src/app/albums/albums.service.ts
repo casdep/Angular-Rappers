@@ -45,19 +45,19 @@ export class AlbumsService {
     console.log('Album toevoegen: ' + album.name);
     return this.http.post(this.serverUrl  + '/albums',
       {
-        artist: album.artist,
+        band: album.band,
         name: album.name,
         pictureURL: album.pictureURL,
         tracks: album.tracks,
-        length: album.lengthMin,
-        rapper: {
-          rapperName: album.rapper.rapperName,
-          breakthroughTrack: album.rapper.breakthroughTrack,
-          dateOfBirth: album.rapper.dateOfBirth
-        },
-        recordcompany: {
-          labelName: album.recordcompany.labelName
-        },
+        lengthMin: album.lengthMin,
+        // rapper: {
+        //   rapperName: album.band.name,
+        //   breakthroughTrack: album.band.bestTrack,
+        //   dateOfBirth: album.band.artists
+        // },
+        // recordcompany: {
+        //   labelName: album.recordcompany.labelName
+        // },
         headers: this.headers
       })
       .toPromise()
@@ -78,19 +78,19 @@ export class AlbumsService {
 
     console.log('Een Album updaten: ' + title);
     return this.http.put(this.serverUrl + '/albums' + '/' + title, {
-        artist: newAlbum.artist,
+        band: newAlbum.band,
         name: newAlbum.name,
         pictureURL: newAlbum.pictureURL,
         tracks: newAlbum.tracks,
         length: newAlbum.lengthMin,
-        rapper: {
-          rapperName: newAlbum.rapper.rapperName,
-          breakthroughTrack: newAlbum.rapper.breakthroughTrack,
-          dateOfBirth: newAlbum.rapper.dateOfBirth
-        },
-        recordcompany: {
-          labelName: newAlbum.recordcompany.labelName
-      },
+      //   rapper: {
+      //     rapperName: newAlbum.band.name,
+      //     breakthroughTrack: newAlbum.band.bestTrack,
+      //     dateOfBirth: newAlbum.band.artists
+      //   },
+      //   recordcompany: {
+      //     labelName: newAlbum.recordcompany.labelName
+      // },
       headers: this.headers
     })
       .toPromise()
@@ -119,22 +119,22 @@ export class AlbumsService {
       });
   }
 
-  public getRapperAlbums(index: number): Promise<Album[]> {
-    console.log('' +
-      'albums ophalen van server');
-    const firstName = this.albums[index].rapper.rapperName;
-    console.log(firstName);
-    return this.http.get(this.serverUrl + '/rappers' + '/' + firstName, {headers: this.headers})
-      .toPromise()
-      .then(response => {
-        console.dir(response.json());
-        this.rapperAlbums = response.json() as Album[];
-        return response.json() as Album[];
-      })
-      .catch(error => {
-        return this.handleError(error);
-      });
-  }
+  // public getRapperAlbums(index: number): Promise<Album[]> {
+  //   console.log('' +
+  //     'albums ophalen van server');
+  //   const firstName = this.albums[index].band.name;
+  //   console.log(firstName);
+  //   return this.http.get(this.serverUrl + '/rappers' + '/' + firstName, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       console.dir(response.json());
+  //       this.rapperAlbums = response.json() as Album[];
+  //       return response.json() as Album[];
+  //     })
+  //     .catch(error => {
+  //       return this.handleError(error);
+  //     });
+  // }
 
   private handleError(error: any): Promise<any> {
     console.log('handleError');

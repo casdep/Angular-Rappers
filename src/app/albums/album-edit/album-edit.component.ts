@@ -47,43 +47,43 @@ export class AlbumEditComponent implements OnInit {
   }
 
   private initForm() {
-    let albumArtist = '';
+    let albumBand = '';
     let albumName = '';
     let albumPictureURL = '';
     let albumTracks = 0;
     let albumLength = 0;
-    let albumRapperName = '';
-    let albumRapperBreakThroughTrack = '';
-    let albumRapperDateOfBirth = '';
-    let albumRecordCompanyLabelName = '';
+    // let albumRapperName = '';
+    // let albumRapperBreakThroughTrack = '';
+    // let albumRapperDateOfBirth = '';
+    // let albumRecordCompanyLabelName = '';
 
     if (this.editMode) {
       const album = this.albumsService.getAlbum(this.id);
-      albumArtist = album.artist;
+      albumBand = album.band;
       albumName = album.name;
       albumPictureURL = album.pictureURL;
       albumTracks = album.tracks;
-      albumLength = album.lengthMin;
-      albumRapperName = album.rapper.rapperName;
-      albumRapperBreakThroughTrack = album.rapper.breakthroughTrack;
-      albumRapperDateOfBirth = album.rapper.dateOfBirth;
-      albumRecordCompanyLabelName = album.recordcompany.labelName;
+      // albumLength = album.lengthMin;
+      // albumRapperName = album.band.name;
+      // albumRapperBreakThroughTrack = album.band.bestTrack;
+      // albumRapperDateOfBirth = album.band.artists;
+      // albumRecordCompanyLabelName = album.recordcompany.labelName;
     }
 
 this.albumForm = new FormGroup({
-  'artist': new FormControl(albumArtist, Validators.required),
+  "band": new FormControl(albumBand, Validators.required),
   'name': new FormControl(albumName, Validators.required),
   'pictureURL': new FormControl(albumPictureURL, Validators.required),
   'tracks': new FormControl(albumTracks, Validators.required),
   'lengthMin': new FormControl(albumLength, Validators.required),
-  'rapper': this.albumRapper = new FormGroup({
-    'rapperName': new FormControl(albumRapperName, Validators.required),
-    'breakthroughTrack': new FormControl(albumRapperBreakThroughTrack, Validators.required),
-    'dateOfBirth': new FormControl(albumRapperDateOfBirth, Validators.required)
-  }),
-  'recordcompany': this.albumRecordCompany = new FormGroup({
-    'labelName': new FormControl(albumRecordCompanyLabelName, Validators.required)
-      })
+  // 'rapper': this.albumRapper = new FormGroup({
+  //   'rapperName': new FormControl(albumRapperName, Validators.required),
+  //   'breakthroughTrack': new FormControl(albumRapperBreakThroughTrack, Validators.required),
+  //   'dateOfBirth': new FormControl(albumRapperDateOfBirth, Validators.required)
+  // }),
+  // 'recordcompany': this.albumRecordCompany = new FormGroup({
+  //   'labelName': new FormControl(albumRecordCompanyLabelName, Validators.required)
+  //     })
     });
   }
 }

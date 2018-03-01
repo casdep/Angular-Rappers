@@ -25,9 +25,9 @@ export class RapperDetailComponent implements OnInit {
         .subscribe(
           (params: Params) => {
             this.id = +params['id'];
-            this.albumsService.getRapperAlbums(this.id)
-              .then(albums => this.album = albums)
-              .catch(error => console.log(error));
+            // this.albumsService.getRapperAlbums(this.id)
+            //   .then(albums => this.album = albums)
+            //   .catch(error => console.log(error));
             this.subscription = this.albumsService.albumsChanged
               .subscribe(
                 (albums: Album[]) => {
